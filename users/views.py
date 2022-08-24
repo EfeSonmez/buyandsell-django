@@ -1,6 +1,7 @@
 from importlib.resources import contents
 from django.shortcuts import render, redirect
 from .forms import NewUserForm
+from django.contrib.auth.decorators import login_required
 
 
 def register(request):
@@ -16,3 +17,9 @@ def register(request):
     }
     return render(request, 'users/register.html', context)
 
+@login_required 
+def profile(request):
+    return render(request, 'users/profile.html')
+
+def createprofile(request):
+    return render(request, 'users/createprofile.html')
